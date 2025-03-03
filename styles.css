@@ -1,0 +1,358 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+h3 {
+    background-color: #f0f0f0;
+    padding: 7px 7px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    height: 90%;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 47%;
+    height: 100%;
+    gap: 10px;
+}
+
+.discussion-box {
+    flex-grow: 1;
+    width: 100%;
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.summ-button-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.summ-button {
+    background-color: #bbb;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.summ-button:hover {
+    background-color: #002079;
+    color: white;
+}
+
+.right-section {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.about-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #bbb;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.about-button:hover {
+    background-color: #002079;
+    color: white;
+}
+
+.about-button.active {
+    background-color: #002079;
+    color: white;
+}
+
+.modal {
+    display: none; /* hide */
+    position: fixed;
+    z-index: 1000;
+    right: 50px;
+    bottom: 130px;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    background-color: transparent;
+    pointer-events: none;
+    box-shadow: 8px 10px 12px rgba(0, 0, 0, 0.6);
+    border-radius: 30px;
+    border: 1px solid #ddd;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 15px;
+    width: 600px;
+    position: relative;
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+.modal-close-button {
+    display: none;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.tab-button {
+    background-color: #bbb;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab-button:hover {
+    background-color: #002079;
+    color: white;
+}
+
+.tab-button.active {
+    background-color: #002079;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(90, 90, 90);
+    padding: 5px 10px;
+    font-size: 11px;
+    white-space: nowrap;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 버튼에 마우스를 올렸을 때 tooltip 보이게 */
+.unaddressed-button {
+    position: relative; /* tooltip 위치 조정 가능하게 함 */
+}
+
+.unaddressed-button:hover .tooltip {
+    display: block;
+}
+
+.summary-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.history-button {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.history-button:hover {
+    color: #002079;
+}
+
+.history-button.left {
+    left: -10px;
+}
+
+.history-button.right {
+    right: -10px;
+}
+
+.summary-box {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 90%
+}
+
+.summary:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.link-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 30px;
+    width: 90%;
+    align-self: center;
+}
+
+.link-box-with-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+.link-box-label {
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.link-box {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+    overflow: visible;
+    white-space: normal;
+}
+
+.link-box ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+#unaddressed-section {
+    max-height: 100vh; /* 화면 높이의 100%까지만 차지하도록 설정 */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.unaddressed-box {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 90%
+}
+
+.chat-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.chat-box {
+    display: flex;
+}
+
+#chat-input {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 50px;
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+}
+
+#chat-send {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+    background-color: #bbb;
+    border: none;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#chat-send:hover {
+    background-color: #002079;
+    color: white;
+}
+
+.chat-message {
+    padding: 6px 10px;
+    margin: 4px 0;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    max-width: 90%;
+    word-wrap: break-word;
+    text-align: right;  /* 텍스트도 오른쪽 정렬 */
+}
