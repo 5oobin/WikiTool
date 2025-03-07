@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Board</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .description {
+            text-align: center;
+        }
+        .bingo-board {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            gap: 5px;
+            max-width: 90vw;
+        }
+        .bingo-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 120px;
+            max-width: 200px;
+            padding: 15px;
+            background-color: white;
+            border: 2px solid #333;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            text-align: center;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            text-overflow: ellipsis;
+        }
+        .bingo-cell:hover {
+            background-color: #002079;
+            color: white;
+        }
+        .bingo-cell.selected {
+            background-color: #002079;
+            color: white;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="title"><h1>Tool Bingo Board</h1></div>
+    <div class="description"><h4>Which pieces of information did you see from this tool?<br>Click on the tiles you recognized by using this tool!</h4></div>
+    <div class="bingo-board" id="bingoBoard"></div>
+    <script>
+        const board = document.getElementById("bingoBoard");
+        
+        const phrases = [
+            "Editors’ usernames", 
+            "Edit counts of the involved editors", 
+            "Editors’ arguments", 
+            "Editor arguments’ supporting details", 
+            "Topic of the talk", 
+            "Associated article’s quality rating (e.g., Good Article, Featured Article)", 
+            "How the talk is resolved (if not resolved, where it is heading)", 
+            "Deletion or discussion process the associated article is under (e.g., AfD, RfD)", 
+            "Editors’ behaviors", 
+            "Classification of cited policies (e.g., policy, guideline, essay)", 
+            "Sources cited in the talk", 
+            "Evaluation of the sources cited in the talk", 
+            "Number of administrators involved in the talk", 
+            "Violation of rules (if any) happening in the talk", 
+            "Violator of the rule (if any) happening in the talk", 
+            "Moderator of the violation (if any) happening in the talk"
+        ];
+        
+        phrases.forEach(phrase => {
+            const cell = document.createElement("div");
+            cell.classList.add("bingo-cell");
+            cell.textContent = phrase;
+            cell.addEventListener("click", () => {
+                cell.classList.toggle("selected");
+            });
+            board.appendChild(cell);
+        });
+    </script>
+</body>
+</html>
